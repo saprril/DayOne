@@ -2,11 +2,22 @@
 
 namespace HelloWorld
 {
- class Program
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            // Test.TestMethod();
+            Test instanceOfTest = new Test();
+            instanceOfTest.TestMethod();
+        }
+    }
+   
+   class Test
    {
-       static void Main(string[] args)
+       public void TestMethod()
        {
-          Console.WriteLine("Hello, World!");
+           Console.WriteLine("This is a test method.");
        }
    }
 }

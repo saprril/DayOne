@@ -39,6 +39,18 @@
             // TODO: Create an array of type Vehicle and add your car and motorcycle instances to it.
             // Loop through the array and call the StartEngine() method on each object.
             // You should see the custom messages from each class.
+
+            List<Vehicle> vehicleArmada = new List<Vehicle>
+            {
+                whiteMustang,
+                silver900,
+                hondaGoldwing
+            };
+
+            for (int i = 0; i < vehicleArmada.Count; i++)
+            {
+                vehicleArmada[i].StartEngine();
+            }
         }
     }
 }

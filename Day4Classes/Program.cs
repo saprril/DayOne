@@ -23,16 +23,17 @@
 
             // TODO: Use the indexer to get information about the car's parts and print them.
             // For example:
-            // Console.WriteLine(myCar["engine"]);
+            Console.WriteLine(whiteMustang["engine"]);
 
             // TODO: Create an instance of the Motorcycle class.
             // For example:
             // Motorcycle myMotorcycle = new Motorcycle("Harley-Davidson", "Iron 883", "Black");
-
+            Motorcycle hondaGoldwing = new Motorcycle("Honda", "Goldwing", "Silver", 14.0, 21.0);
             // TODO: Call the StartEngine() and Drive() methods for your motorcycle object.
-
+            hondaGoldwing.StartEngine();
+            hondaGoldwing.Drive();
             // TODO: Call the Refuel() method on both your car and motorcycle objects.
-
+            hondaGoldwing.Refuel(10);
             // --- Demonstrating Polymorphism ---
             Console.WriteLine("\n--- Demonstrating Polymorphism ---");
             // TODO: Create an array of type Vehicle and add your car and motorcycle instances to it.

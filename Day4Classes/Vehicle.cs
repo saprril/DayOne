@@ -69,9 +69,11 @@ namespace Day4Classes
                 switch (part.ToLower())
                 {
                     case "engine":
-                        return "A powerful V8 engine.";
+                        return "The powerhouse of the car.";
                     case "tires":
-                        return "Four all-weather tires.";
+                        return "Four tires.";
+                    case "exhaust":
+                        return "Smoke 'em.";
                     default:
                         return "Part not found.";
                 }

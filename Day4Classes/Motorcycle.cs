@@ -1,11 +1,23 @@
 namespace Day4Classes
 {
 
+    public struct RidingTime {
+        public int hours;
+        public int minutes;
+        public int seconds;
 
+        public RidingTime(int hours, int minutes, int seconds)
+        {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+        }
+    }
     public class Motorcycle : Vehicle, ITransport
     {
         // A private field for the motorcycle's fuel level.
         private double _fuelLevel;
+        private static readonly double _averageSpeed = 38.27;
 
         // TODO: Create a constructor for the Motorcycle class using the 'base' keyword.
         public Motorcycle(string make, string model, string color, double fuelEcon, double tankCapacity) : base(make, model, color, fuelEcon, tankCapacity)
@@ -17,9 +29,20 @@ namespace Day4Classes
         public override void Drive()
         {
             Random randomDistanceGenerator = new Random();
-            double distance = randomDistanceGenerator.Next(0, (int)(this.FuelEcon * this._fuelLevel));
-            this._fuelLevel = this._fuelLevel - distance * this.FuelEcon;
-            Console.WriteLine($"The {Color} {Make} {Model} bike is driving for {distance}, there are {_fuelLevel} percent remaining fuel.");
+
+            double tankLitreage = TankCapacity * (_fuelLevel / 100);
+            double maxDistance = tankLitreage * FuelEcon;
+
+            double randomRidingDistance = randomDistanceGenerator.Next(0, (int)maxDistance);
+
+            var totalRidingTime = new RidingTime((int)(randomRidingDistance/_averageSpeed), 54, 3);
+
+            double fuelConsumption = randomRidingDistance / FuelEcon;
+
+            _fuelLevel = ((tankLitreage - fuelConsumption) / TankCapacity) * 100;
+            Console.WriteLine($"Driving distance: {randomRidingDistance} kms");
+            Console.WriteLine($"The {Color} {Make} {Model} bike is driving for {totalRidingTime.hours} hours {totalRidingTime.minutes} minutes {totalRidingTime.seconds} seconds");
+            Console.WriteLine($"there are {_fuelLevel} percent remaining fuel.");
         }
 
         // --- Interface Method Implementation ---
@@ -27,7 +50,7 @@ namespace Day4Classes
         // This method should add fuel and print the new fuel level.
         public void Refuel(double amount)
         {
-            Console.WriteLine($"This motorcycle ({Color} {Make} {Model}) iss being refueled!");
+            Console.WriteLine($"This motorcycle ({Color} {Make} {Model}) is being refueled!");
             if (amount > 100 - _fuelLevel)
             {
                 Console.WriteLine("The fuel tank is already full!");
@@ -40,7 +63,7 @@ namespace Day4Classes
             else
             {
                 _fuelLevel = _fuelLevel + amount;
-                Console.WriteLine($"Now you have {_fuelLevel}");
+                Console.WriteLine($"Now you have {_fuelLevel} percent of full tank");
             }
         }
     }

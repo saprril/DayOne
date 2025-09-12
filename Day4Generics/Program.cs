@@ -53,8 +53,8 @@
 
             // --- Student's Task: Demonstrate generic method subclassing ---
             // TODO: Call the PrintAll<T>() method on both repositories to demonstrate its use.
-            // studentRepo.PrintAll<Student>();
-            // courseRepo.PrintAll<Course>();
+            studentRepo.PrintAll<Student>();
+            courseRepo.PrintAll<Course>();
 
             // --- Covariance & Contravariance (For your knowledge) ---
             // Covariance allows you to use a more derived type than that specified by the generic parameter.

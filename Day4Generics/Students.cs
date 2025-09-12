@@ -6,7 +6,7 @@ namespace Day4Generics
         public int Id { get; set; }
     }
 
-    public class Student: IEntity
+    public class Student : IEntity
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -17,6 +17,11 @@ namespace Day4Generics
             this.Id = id;
             this.Name = name;
             this.Major = major;
+        }
+
+        public override string ToString()
+        {
+            return $"{{id: {this.Id}, Name: {this.Name}, Major: {this.Major}}}";
         }
     }
 
@@ -31,6 +36,11 @@ namespace Day4Generics
             this.Id = id;
             this.Title = title;
             this.Credits = credits;
+        }
+
+        public override string ToString()
+        {
+            return  $"{{id: {this.Id}, Title: {this.Title}, Major: {this.Credits}}}"; ;
         }
     }
 }

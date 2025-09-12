@@ -42,7 +42,10 @@ namespace Day4Generics
         {
             Console.WriteLine($"\n--- Printing all items of type {typeof(U).Name} ---");
             // TODO: Iterate through the _items list and print each item's details.
-            // Make sure to handle the cast from T to U.
+            foreach (var item in _items)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
     }
 }

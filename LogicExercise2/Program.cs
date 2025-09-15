@@ -1,13 +1,7 @@
-﻿using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Xml.XPath;
+﻿using System.Text;
 
 namespace LogicExercise2
 {
-
-
-
     class Program
     {
         public static void Main(string[] args)

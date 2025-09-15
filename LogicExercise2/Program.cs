@@ -118,7 +118,7 @@ namespace LogicExercise2
         public static string NumberProcessor(int value)
         {
             /*
-            A function that returns a string based on the integer
+            A function that connects FooBarJazzBuilder and ModuloProcessor
             */
             string result = "";
             if (ModuloProcessor(value) == Divisibility.None)

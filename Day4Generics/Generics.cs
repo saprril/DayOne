@@ -20,12 +20,14 @@ namespace Day4Generics
         // NOTE: This will require a cast or a check for an 'Id' property.
         // A good way to do this would be to use a predicate.
         // For simplicity, let's assume T has an 'Id' property.
-        public T GetById(int id)
-        {
-            // Your code here.
-            // You'll need to find the item with the matching ID.
-            return _items.FirstOrDefault(p => p.Id == id);
-        }
+        
+        // public T GetById(int id)
+        // {
+        //     // Your code here.
+        //     // You'll need to find the item with the matching ID.
+        //     return _items.FirstOrDefault(p => p.Id == id);
+        // }
+        
 
         // TODO: Complete the GetAll method to return all items.
         public IEnumerable<T> GetAll()
@@ -38,14 +40,15 @@ namespace Day4Generics
         // This is a generic method with its own generic type 'U'.
         // The 'where U : T' constraint means 'U' must be a subclass of 'T'.
         // This demonstrates subclassing generic methods.
-        public void PrintAll<U>() where U : T
-        {
-            Console.WriteLine($"\n--- Printing all items of type {typeof(U).Name} ---");
-            // TODO: Iterate through the _items list and print each item's details.
-            foreach (var item in _items)
-            {
-                Console.WriteLine(item.ToString());
-            }
-        }
+        // public void PrintAll<U>() where U : T
+        // {
+        //     Console.WriteLine($"\n--- Printing all items of type {typeof(U).Name} ---");
+        //     // TODO: Iterate through the _items list and print each item's details.
+        //     foreach (var item in _items)
+        //     {
+        //         Console.WriteLine(item.ToString());
+        //     }
+        // }
+        
     }
 }

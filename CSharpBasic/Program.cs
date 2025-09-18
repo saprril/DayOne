@@ -185,7 +185,7 @@ public class Program
             on the result to provide a default value (e.g., 0). Print the result.
         */
 
-        string stringOfNull = null;
+        string? stringOfNull = null;
         string defaultString = "Unknown";
 
         Console.WriteLine($"Lentgh of string of null = {stringOfNull?.Length}");

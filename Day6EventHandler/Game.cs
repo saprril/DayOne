@@ -9,7 +9,7 @@ namespace Day6EventHandler
         public int AwayScore { get; private set; }
         public GameState CurrentState { get; private set; }
 
-        public EventHandler<GameEventArgs>? GameStateHandler;
+        public event EventHandler<GameEventArgs>? GameStateHandler;
 
         public Game(Team home, Team away)
         {

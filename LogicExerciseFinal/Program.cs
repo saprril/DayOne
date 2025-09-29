@@ -18,14 +18,19 @@ namespace LogicExerciseFinal
             MyClass.AddRules(9, "huzz");
 
             // MyClass.PrintNumber(24);
-
-
-
-        
+            int number = GetInput();
+            if (number > 0)
+            {
+                MyClass.PrintNumber(number);
+            }
+            else
+            {
+                Console.WriteLine("Nope!");
+            }
 
         }
 
-        public int GetInput()
+        public static int GetInput()
         {
             Console.WriteLine("Give me some number: ");
 

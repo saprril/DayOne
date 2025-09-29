@@ -9,12 +9,19 @@ namespace LogicExerciseFinal
             // Console.WriteLine("Hello");
 
 
-            FooBar fbController = new FooBar(3, "Foo");
+            FooBar MyClass = new FooBar();
 
-            fbController.PrintNumber(10);
-            fbController.AddRules(6, "bar");
-            fbController.AddRules(5, "jazz");
-            BitArray sampleBA = fbController.ModuloProcessor(30);
+            MyClass.AddRules(3, "foo");
+            MyClass.AddRules(4, "baz");
+            MyClass.AddRules(5, "bar");
+            MyClass.AddRules(7, "jazz");
+            MyClass.AddRules(9, "huzz");
+
+            // MyClass.PrintNumber(24);
+
+
+
+        
 
         }
 

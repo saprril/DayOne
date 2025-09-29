@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Text;
 
@@ -7,17 +8,45 @@ namespace LogicExerciseFinal
     class FooBar
     {
         public Dictionary<int, string> RuleSetDict { get; set; }
+
+        public FooBar()
+        {
+            RuleSetDict = new Dictionary<int, string>();
+        }
         public FooBar(int integerX, string stringX)
         {
             RuleSetDict = new Dictionary<int, string>();
             RuleSetDict[integerX] = stringX;
         }
 
-        Func<int, string> FooBarProcessor = (val) =>
+        public string FooBarProcessor(int val)
         {
             StringBuilder decisionSb = new StringBuilder();
+            List<string> valuesByKeyOrder = RuleSetDict.OrderBy(kv => kv.Key)
+                                                        .Select(kv => kv.Value)
+                                                        .ToList();
+            if (!IsDivisibleByAnyMember(val))
+            {
+                decisionSb.Append(val);
+            }
+            else
+            {
+                for (int i = 0; i < valuesByKeyOrder.Count; i++)
+                {
+                    if (ModuloProcessor(val)[i])
+                    {
+                        decisionSb.Append(valuesByKeyOrder[i]);
+                    }
+                }
+            }
+
             return decisionSb.ToString();
-        };
+        }
+
+        public bool IsDivisibleByAnyMember(int value)
+        {
+            return ModuloProcessor(value).Cast<bool>().Any(b => b);
+        }
 
         public BitArray ModuloProcessor(int value)
         {
@@ -39,7 +68,7 @@ namespace LogicExerciseFinal
                     divisibility[i] = true;
                 }
             }
-            Console.WriteLine(string.Join("", divisibility.Cast<bool>().Select(b => b ? "1" : "0")));
+            // Console.WriteLine(string.Join("", divisibility.Cast<bool>().Select(b => b ? "1" : "0")));
 
             return divisibility;
         }
@@ -65,7 +94,7 @@ namespace LogicExerciseFinal
         {
             int[] numberArray = Enumerable.Range(1, number).ToArray();
             string[] stringArray = numberArray.Select(FooBarProcessor).ToArray();
-            Console.WriteLine(string.Join(", ", numberArray));
+            Console.WriteLine(string.Join(", ", stringArray));
         }
     }
 }

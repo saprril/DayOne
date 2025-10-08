@@ -1,5 +1,10 @@
-﻿namespace FooBarService;
-class FooBar
+﻿using System.Collections;
+using System.Data;
+using System.Text;
+namespace FooBarService;
+
+
+public class FooBar
 {
     public Dictionary<int, string> RuleSetDict { get; set; }
 

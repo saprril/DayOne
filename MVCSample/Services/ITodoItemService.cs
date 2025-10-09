@@ -8,5 +8,8 @@ namespace MVCSample.Services
     public interface ITodoItemService
     {
         Task<TodoItem[]> GetIncompleteTodoItemAsync();
+        Task<bool> AddItemAsync(TodoItem newItem);
+        
+        Task<bool> MarkDoneAsync(Guid id);
     }
 }

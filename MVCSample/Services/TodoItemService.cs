@@ -20,5 +20,36 @@ namespace MVCSample.Services
                             .Where(x => x.IsDone == false)
                             .ToArrayAsync();
         }
+
+        public async Task<bool> AddItemAsync(TodoItem newItem)
+        {
+            if (newItem == null || string.IsNullOrWhiteSpace(newItem.Title))
+            {
+                return false;
+            }
+            newItem.Id = Guid.NewGuid();
+            newItem.IsDone = false;
+            newItem.DueAt = newItem.DueAt?.ToUniversalTime();
+
+            _context.Items.Add(newItem);
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+        }
+
+        public async Task<bool> MarkDoneAsync(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return false;
+            }
+            var item = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
+            if (item == null)
+            {
+                return false;
+            }
+            item.IsDone = true;
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+        }   
     }
 }

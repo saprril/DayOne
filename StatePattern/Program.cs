@@ -8,6 +8,7 @@ using System.Text;
 using StatePattern.Data;
 using StatePattern.Models;
 using StatePattern.Services;
+using StatePattern.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddAutoMapper(typeof(DocumentProfile));
 
 
 // 3️⃣ Configure JWT Authentication

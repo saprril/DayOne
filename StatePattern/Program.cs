@@ -9,6 +9,7 @@ using StatePattern.Data;
 using StatePattern.Models;
 using StatePattern.Services;
 using StatePattern.Profiles;
+using StatePattern.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>()
     .AddDefaultTokenProviders();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IDocumentService, DocumentService>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 builder.Services.AddAutoMapper(typeof(DocumentProfile));
 
 
